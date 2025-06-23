@@ -269,6 +269,8 @@ typedef enum {
   test,
   vaddpd,
   vdivpd,
+  verr,
+  verw,
   vmovdqu,
   vmovupd,
   vmulpd,
