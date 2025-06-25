@@ -258,6 +258,8 @@ TEST_ASM = \
 		  test/sub.asm \
 		  test/test.asm \
 		  test/vaddpd.asm \
+		  test/verr.asm \
+		  test/verw.asm \
 		  test/vector_add.asm \
 		  test/vector_add_mem.asm \
 		  test/vector_float_divide.asm \
