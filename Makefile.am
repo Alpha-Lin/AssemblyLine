@@ -199,6 +199,7 @@ TEST_ASM = \
 		  test/jmp.asm \
 		  test/lea.asm \
 		  test/lea_no_base.asm \
+		  test/loope.asm \
 		  test/mov.asm \
 		  test/mov_reg_imm.asm \
 		  test/mov_reg_imm32.asm \
@@ -236,6 +237,7 @@ TEST_ASM = \
 		  test/psubw.asm \
 		  test/ptr.asm \
 		  test/push.asm \
+		  test/pushf.asm \
 		  test/pxor.asm \
 		  test/rdpmc.asm \
 		  test/rdtsc.asm \

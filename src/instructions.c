@@ -103,6 +103,12 @@ const struct instr_table INSTR_TABLE[] = {
     {{'\0'},        cmp,         {NA, rm},   RM,  OPERATION,      1,   NA,  3,  {REX, 0x3a, REG}},
     {{'\0'},        cmp,         {mi, ri},   M,   OPERATION,      1,   7,   3,  {REX, 0x80, REG}},
     {{'\0'},        cmp,         {NA, NA},   I,   OPERATION,      1,   NA,  2,  {REX, 0x3c}},
+
+    {"crc32",        crc32,         {rr, rm},   RM,  OTHER,      NA,   NA,  5, {0xf2, 0x0f, 0x38, 0xf0, REG}},
+    {{'\0'},         crc32,         {rr, rm},   RM,  OTHER,      NA,   NA,  6, {0xf2, REX, 0x0f, 0x38, 0xf0, REG}},
+    {{'\0'},         crc32,         {rr, rm},   RM,  OTHER,      NA,   NA,  5, {0xf2, 0x0f, 0x38, 0xf1, REG}},
+    {{'\0'},         crc32,         {rr, rm},   RM,  OTHER,      NA,   NA,  6, {0xf2, REX, 0x0f, 0x38, 0xf1, REG}},
+
     {"cvtdq2pd",    cvtdq2pd,    {NA, vv},   RM,  VECTOR,         NA,  NA,  5,  {0xf3, REX, 0x0f, 0xe6, REG}},
     {"cvtpd2dq",    cvtpd2dq,    {NA, vv},   RM,  VECTOR,         NA,  NA,  5,  {0xf2, REX, 0x0f, 0xe6, REG}},
     {"dec",         dec,         {r,  m},    M,   OTHER,          1,   1,   3,  {REX, 0xfe, REG}},
@@ -150,6 +156,9 @@ const struct instr_table INSTR_TABLE[] = {
     {{'\0'},        js,          {NA,  NA},  S,   CONTROL_FLOW,   NA,  NA,  2,  {0x78, ib}},
     {"lea",         lea,         {NA, rm},   RM,  OTHER,          NA,  NA,  3,  {REX, 0x8d, REG}},
     {"lfence",      lfence,      {n,  n},    NA,  OTHER,          NA,  NA,  3,  {0x0f, 0xae, 0xe8}},
+    
+    {"loope",       loope,       {n,  n},    S,   BYTE_OPD,   NA,  NA,  2,  {0xe1, ib}},
+    
     {"mfence",      mfence,      {n,  n},    NA,  OTHER,          NA,  NA,  3,  {0x0f, 0xae, 0xf0}},
     {"mov",         mov,         {rr, mr},   MR,  DATA_TRANSFER,  1,   NA,  3,  {REX, 0x88, REG}},
     {{'\0'},        mov,         {NA, rm},   RM,  DATA_TRANSFER,  1,   NA,  3,  {REX, 0x8a, REG}},
@@ -231,6 +240,9 @@ const struct instr_table INSTR_TABLE[] = {
     {{'\0'},        push,        {NA, m},    O,   DATA_TRANSFER,  NA,  NA,  3,  {REX, 0xff, 0x30+rd}},
     {{'\0'},        push,        {n,  n},    I,   DATA_TRANSFER,  NA,  NA,  2,  {0x6a, ib}},
     {{'\0'},        push,        {NA, NA},   I,   PAD_ALWAYS,     NA,  NA,  1,  {0x68}},
+
+    {"pushf",       pushf,       {n, n},     NA,  OTHER,          NA,  NA,  1,  {0x9c}},
+
     {"rcr",         rcr,         {mi, ri},   M,   SHIFT,          1,   3,   4,  {REX, 0xd0, REG, ib}},
     {{'\0'},        rcr,         {NA, NA},   M,   SHIFT,          1,   2,   4,  {REX, 0xc1, REG, ib}},
     {"rdpmc",       rdpmc,       {n,  n},    NA,  OTHER,          NA,  NA,  2,  {0x0f, 0x33}},
@@ -303,6 +315,10 @@ const struct instr_table INSTR_TABLE[] = {
     {{'\0'},        test,        {NA, NA},   I,   PAD_ALWAYS,     1,   NA,  2,  {REX, 0xa8}},
     {"vaddpd",      vaddpd,      {yym, yyy}, RVM, VECTOR_AVX,     NA,  NA,  3,  {VEX(NDS,B256,X66,X0F,WIG), 0x58, REG}},
     {"vdivpd",      vdivpd,      {yym, yyy}, RVM, VECTOR_AVX,     NA,  NA,  3,  {VEX(NDS,B256,X66,X0F,WIG), 0x5e, REG}},
+    
+    {"verr",      verr,      {r, m}, M, OTHER,     NA,  4,  3,  {0x0f, 0x00, REG}},
+    {"verw",      verw,      {r, m}, M, OTHER,     NA,  5,  3,  {0x0f, 0x00, REG}},
+
     {"vmovupd",     vmovupd,     {ym, yy},   RM,  VECTOR_AVX,     NA,  NA,  3,  {VEX(NNN,B256,X66,X0F,WIG), 0x10, REG}},
     {{'\0'},        vmovupd,     {my, NA},   MR,  VECTOR_AVX,     NA,  NA,  3,  {VEX(NNN,B256,X66,X0F,WIG), 0x11, REG}},
     {{'\0'},        vmovupd,     {vm, vv},   RM,  VECTOR_AVX,     NA,  NA,  3,  {VEX(NNN,B128,X66,X0F,WIG), 0x10, REG}},
