@@ -104,6 +104,8 @@ const struct instr_table INSTR_TABLE[] = {
     {{'\0'},        cmp,         {mi, ri},   M,   OPERATION,      1,   7,   3,  {REX, 0x80, REG}},
     {{'\0'},        cmp,         {NA, NA},   I,   OPERATION,      1,   NA,  2,  {REX, 0x3c}},
 
+    {"cmpxchg8b",   cmpxchg8b,   {m, m},     M,   OPERATION,      NA,   1,  3,  {0x0f, 0xc7, REG}},
+
     {"crc32",        crc32,         {rr, rm},   RM,  OTHER,      NA,   NA,  5, {0xf2, 0x0f, 0x38, 0xf0, REG}},
     {{'\0'},         crc32,         {rr, rm},   RM,  OTHER,      NA,   NA,  6, {0xf2, REX, 0x0f, 0x38, 0xf0, REG}},
     {{'\0'},         crc32,         {rr, rm},   RM,  OTHER,      NA,   NA,  5, {0xf2, 0x0f, 0x38, 0xf1, REG}},

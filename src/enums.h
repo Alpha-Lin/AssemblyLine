@@ -146,6 +146,7 @@ typedef enum {
   cmovs,
   cmovz,
   cmp,
+  cmpxchg8b,
   cpuid,
   crc32,
   cvtdq2pd,

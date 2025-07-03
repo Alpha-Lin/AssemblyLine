@@ -193,6 +193,7 @@ TEST_ASM = \
 		  test/clc.asm \
 		  test/clflush.asm \
 		  test/cmp.asm \
+		  test/cmpxchg8b.asm \
 		  test/cpuid.asm \
 		  test/high_low_xmm.asm \
 		  test/imul.asm \
